@@ -1,13 +1,15 @@
 About mbdata
 ============
 
-Home: https://github.com/lalinsky/mbdata
+Home: https://github.com/acoustid/mbdata
 
 Package license: MIT
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mbdata-feedstock/blob/master/LICENSE.txt)
 
 Summary: MusicBrainz Database Tools
+
+Development: https://github.com/acoustid/mbdata
 
 Current build status
 ====================
