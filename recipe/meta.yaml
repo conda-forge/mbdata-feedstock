@@ -1,5 +1,5 @@
 {% set name = "mbdata" %}
-{% set version = "26.0.1" %}
+{% set version = "27.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +7,28 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
-  sha256: a0ada9081b29f72502aebb859589cfed39aac91eed7e6f944da9e90a3e5c547a
+  sha256: 83c17e6670fe73ecf3bb1bfcb5eecbf9ad8bb9e3bc4ea6daa19cdbc2b6f1aab5
 
 build:
   noarch: python
   entry_points:
     - mbslave=mbdata.replication:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
     - pip
-    - python =>3.6
+    - python >=3.7,<4.0
+    - poetry
   run:
     - contextlib2
-    - python  =>3.6
+    - python >=3.7,<4.0
     - psycopg2
-    - six
+    - six >=1.16.0,<2.0.0
+    - sqlparse
+    - lxml
+    - sqlalchemy
 
 test:
   imports:
@@ -43,5 +47,5 @@ about:
   dev_url: https://github.com/acoustid/mbdata
 
 extra:
-  recipe-maintainers: 
+  recipe-maintainers:
     - HeavyTony2
