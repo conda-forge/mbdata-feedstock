@@ -14,19 +14,17 @@ build:
   entry_points:
     - mbslave=mbdata.replication:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - python >=3.7,<4.0
-    - poetry
+    - poetry-core >=1.0.0
   run:
-    - contextlib2
     - python >=3.7,<4.0
     - psycopg2
     - six >=1.16.0,<2.0.0
-    - sqlparse
     - lxml
     - sqlalchemy
 
