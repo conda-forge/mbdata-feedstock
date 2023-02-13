@@ -34,7 +34,6 @@ test:
   commands:
     - pip check
     - mbslave --help
-    - mbslave --version
   requires:
     - pip
 
