@@ -1,41 +1,40 @@
 {% set name = "mbdata" %}
-{% set version = "27.1.0" %}
+{% set version = "29.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
-  sha256: 83c17e6670fe73ecf3bb1bfcb5eecbf9ad8bb9e3bc4ea6daa19cdbc2b6f1aab5
-
+  #url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
+  url: https://github.com/acoustid/mbdata/archive/v{{ version }}.tar.gz
+  sha256: dc131ee528a6d918b309e01eb1d8a608096a10086eafb8c55e9b6cec9691f8f8
+  
 build:
   noarch: python
-  entry_points:
-    - mbslave=mbdata.replication:main
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
     - pip
-    - python >=3.7,<4.0
+    - python {{ python_min }}
     - poetry-core >=1.0.0
   run:
-    - python >=3.7,<4.0
-    - psycopg2
+    - python >={{ python_min }},<4.0
     - six >=1.16.0,<2.0.0
-    - lxml
-    - sqlalchemy
+  run_constrained:
+    - SQLAlchemy >=1.4.29,<2.0.0
+    - lxml >=4.9.1,<5.0.0
 
 test:
   imports:
     - mbdata
   commands:
     - pip check
-    - mbslave --help
   requires:
     - pip
+    - python {{ python_min }} 
 
 about:
   home: https://github.com/acoustid/mbdata
@@ -43,6 +42,7 @@ about:
   license: MIT
   license_file: LICENSE
   dev_url: https://github.com/acoustid/mbdata
+  description: To use mbslave, install the package with the same name
 
 extra:
   recipe-maintainers:
