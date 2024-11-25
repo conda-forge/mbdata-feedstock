@@ -6,15 +6,16 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
-  sha256: 83c17e6670fe73ecf3bb1bfcb5eecbf9ad8bb9e3bc4ea6daa19cdbc2b6f1aab5
-
+  #url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
+  url: https://github.com/acoustid/mbdata/archive/v{{ version }}.tar.gz
+  sha256: dc131ee528a6d918b309e01eb1d8a608096a10086eafb8c55e9b6cec9691f8f8
+  
 build:
   noarch: python
   entry_points:
     - mbslave=mbdata.replication:main
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
