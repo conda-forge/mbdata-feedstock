@@ -12,31 +12,29 @@ source:
   
 build:
   noarch: python
-  entry_points:
-    - mbslave=mbdata.replication:main
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - pip
-    - python >=3.7,<4.0
+    - python {{ python_min }}
     - poetry-core >=1.0.0
   run:
-    - python >=3.7,<4.0
-    - psycopg2
+    - python >={{ python_min }}<4.0
     - six >=1.16.0,<2.0.0
-    - lxml
-    - sqlalchemy
+  run_constrained:
+    - SQLAlchemy >=1.4.29,<2.0.0
+    - lxml >=4.9.1,<5.0.0
 
 test:
   imports:
     - mbdata
   commands:
     - pip check
-    - mbslave --help
   requires:
     - pip
+    - python {{ python_min }} 
 
 about:
   home: https://github.com/acoustid/mbdata
