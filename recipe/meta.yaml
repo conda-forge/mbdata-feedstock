@@ -21,7 +21,7 @@ requirements:
     - python {{ python_min }}
     - poetry-core >=1.0.0
   run:
-    - python >={{ python_min }}<4.0
+    - python >={{ python_min }},<4.0
     - six >=1.16.0,<2.0.0
   run_constrained:
     - SQLAlchemy >=1.4.29,<2.0.0
