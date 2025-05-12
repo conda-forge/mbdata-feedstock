@@ -1,5 +1,5 @@
 {% set name = "mbdata" %}
-{% set version = "29.0.0" %}
+{% set version = "30.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,8 +8,8 @@ package:
 source:
   #url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
   url: https://github.com/acoustid/mbdata/archive/v{{ version }}.tar.gz
-  sha256: dc131ee528a6d918b309e01eb1d8a608096a10086eafb8c55e9b6cec9691f8f8
-  
+  sha256: f32992e676969fbeed5b8605d584e5c61c562322b684c4886b88ac810d4bd41f
+
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -34,7 +34,7 @@ test:
     - pip check
   requires:
     - pip
-    - python {{ python_min }} 
+    - python {{ python_min }}
 
 about:
   home: https://github.com/acoustid/mbdata

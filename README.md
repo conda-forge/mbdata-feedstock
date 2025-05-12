@@ -11,6 +11,8 @@ Summary: MusicBrainz Database Tools
 
 Development: https://github.com/acoustid/mbdata
 
+To use mbslave, install the package with the same name
+
 Current build status
 ====================
 
