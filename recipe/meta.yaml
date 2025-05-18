@@ -1,5 +1,5 @@
 {% set name = "mbdata" %}
-{% set version = "30.0.0" %}
+{% set version = "30.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   #url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mbdata-{{ version }}.tar.gz
   url: https://github.com/acoustid/mbdata/archive/v{{ version }}.tar.gz
-  sha256: f32992e676969fbeed5b8605d584e5c61c562322b684c4886b88ac810d4bd41f
+  sha256: cc62c06033ed4249a3762829d5b709484d07a24636d052c45f6b77fd9ab8f3b8
 
 build:
   noarch: python
